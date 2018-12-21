@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="table-wrapper" class="container-fluid" style="height: 100%;">
+        <div class="content">
+            <h1>表格</h1>
+            <h5>表格简介</h5>
+            <h2>示例</h2>
+            <table class="example">
+                <tbody>
+                    <tr>
+                        <td>
+                            <table id="table-list" class="table-list"></table>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div id="codeDiv" class="codeDiv">
+                                <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                                <span class="showDivSpan">
+                                    <span>显示代码</span>
+                                </span>
+                            </div>
+                            <div class="codeArea">
+                                <div>
+                                    <p>
+                                        <pre>
+const source = [{"ownname": "张三", "address": "南京市狮子桥", "phone": "123", "bank":
+"南京银行","account": "account123"}, {"ownname": "李四", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行","account": "account123"}, {"ownname": "王五", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行","account": "account123"}],
+columns = [{field: 'ck'},{field: 'ownname',title: '名称',formatter: function (value) {if (value === '2') {return '1';}else {return '3';}}},
+{field: 'address',title: '地址'},{field: 'phone',title: '手机号',cellClick: function (value, trData, event, field) {}},{field: 'bank',title: '银行卡名称'},{field: 'account',title: '银行卡账号'}];
+$(document).ready(() => {
+    $("#table-list").TableWrapper({
+        source,
+        columns,
+    })
+})
+</pre>
+                                    </p>
+                                    <div class="codeTip">
+                                        'source'参数是用作定义数据的,数据格式如下:
+                                    </div>
+                                    <pre>
+    source : [{
+    "ownname": "张三", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }, {
+    "ownname": "李四", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }, {
+    "ownname": "王五", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }]
+    </pre>
+                                    <div class="codeTip">
+                                        'sourceUrl'参数是用作定义数据的,数据格式如下:
+                                    </div>
+                                    <pre>
+{
+    "resultMsg":null,
+    "resultCode":null,
+    "result":[{
+    "ownname": "张三", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }, {
+    "ownname": "李四", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }, {
+    "ownname": "王五", "address": "南京市狮子桥", "phone": "123", "bank": "南京银行", "account": "account123"
+    }]
+}
+</pre>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h2>参数</h2>
+            <table class="normal">
+                <thead>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>extraTools</td>
+                        <td>额外的头部工具按钮,格式遵循tools的格式,框架会为你额外添加到tools里面</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>tools</td>
+                        <td>默认有添加,修改,删除3个按钮, 如果您只需要添加,或者3个中的2个,请通过toolsFlag设置</td>
+                        <td>Array</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>dialog</td>
+                        <td>设置添加,修改的时候弹出对话框的属性</td>
+                        <td>Object</td>
+                        <td>—</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>rowTools</td>
+                        <td>行按钮</td>
+                        <td>Array</td>
+                        <td>—</td>
+                        <td>[]</td>
+                    </tr>
+                    <tr>
+                        <td>toolsFlag</td>
+                        <td>采用二进制移位算法,1=添加,2=修改,4=删除</td>
+                        <td>Number</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>enableSearch</td>
+                        <td>是否允许搜索,这个选项关系到是否会显示出搜索栏</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>searchPlaceholder</td>
+                        <td>这个选项可以设置搜索框内提示文字,不同的表格搜索条件是不同的</td>
+                        <td>String</td>
+                        <td>—</td>
+                        <td>输入搜索</td>
+                    </tr>
+                    <tr>
+                        <td>sourceUrl</td>
+                        <td>远程地址,获取数据用的,这个选项优先于source选项</td>
+                        <td>Array</td>
+                        <td>Array/null</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>source</td>
+                        <td>本地json数据</td>
+                        <td>Array</td>
+                        <td>Array/null</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>searchUrl</td>
+                        <td>点击搜索按钮的时候，走这个地址去检索，
+                            这个值主要是为了解决如下的场景：
+                            第一次加载的时候是source本地数据，然后点击搜索的时候去搜索远程数据
+                            需求很变态，举个例子，流程中甲方是a和b，要显示个列表，第一次把a，b显示出来，点击搜索的时候去后端调取所有甲方的数据
+
+                            注意：
+                            这个值不要轻易去设置，除非你遇到了上述场景，因为它会去覆盖掉sourceUrl的值，并且会导致source设置无效</td>
+                        <td>String</td>
+                        <td>String/null</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>columns</td>
+                        <td>
+                            <!-- <pre>
+                            columns 参数是十分重要的,这里没有给出默认值, 下面是对columns参数的说明
+
+                            /***
+                            *
+                            * field String 字段名,与数据的key值对应, 当field == 'ck'的时候框架会解析成选择框
+                            * title String 列名
+                            * isSearchField Boolean 是否搜索关键字
+                            * cellClick Function 单元格点击事件 value, row, event, field
+                            *
+                            * @param value 单元格的值
+                            * row 本行数据
+                            * event 点击事件对象参数
+                            * field 单元格的字段名
+                            *
+                            * formatter Function 单元格格式化 value
+                            *
+                            * @param value 单元格的值
+                            *
+                            * sort Boolean 服务端排序, DEFAULT false
+                            * dbField String 数据库的字段名, 如果不设置这个值, 默认是使用field字段
+                            */
+
+                            /*
+                            例如如下配置:
+                            columns: [{
+                            field:'ck'
+                            }, {
+                            field:'name',title:'名称', formatter: function(value) {
+                            if(value === '2') {
+                            return '1';
+                            }
+                            else {
+                            return '3';
+                            }
+                            }
+                            }, {
+                            field:'age',title:'年龄'
+                            }, {
+                            field:'serialNO',title:'案件编号', cellClick: function(value, trData, event, field) {
+                            }
+                            }]
+                            */
+                            </pre> -->
+                        </td>
+                        <td>Array</td>
+                        <td>Array/null</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>pagination</td>
+                        <td>是否显示分页</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>memorable</td>
+                        <td>是否带有搜索记忆功能,存储前几次搜索选中的数据, 记忆的数据不参与分页</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>noCache</td>
+                        <td>不需要缓存, 针对memorable属性的记忆功能
+                            如果表格设置了memorable,但是有时候确实是不需要记忆功能
+                            比如dialog操作结束之后,需要自动reload,此时的reload不需要将选中的数据记忆下来</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>remoteParam</td>
+                        <td>自定义远程传递参数</td>
+                        <td>Object</td>
+                        <td>一</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>pager</td>
+                        <td>分页参数设置，pageSize : 每页显示条数，curPage: 当前页数，total: 总条数, totalPage: 总页数， 值为Number类型</td>
+                        <td>Object</td>
+                        <td>一</td>
+                        <td>一</td>
+                    </tr>
+                    <tr>
+                        <td>singleSelected</td>
+                        <td>是否单选,默认是多选</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>searchFields</td>
+                        <td>这个选项是存储搜索关键字的,
+                            一般不需要设置这个参数,而是框架用来存储用的,
+                            当然,如果设置了,那么框架会把你的设置作为额外的设置,一起进行判断</td>
+                        <td>Array</td>
+                        <td>一</td>
+                        <td>一</td>
+                    </tr>
+                    <tr>
+                        <td>isEmptyOnInit</td>
+                        <td>有时候列表需要在初始化的时候不加载数据,填入搜索条件的时候再加载,这个选项可以帮助你</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>事件</h2>
+            <table class="normal">
+                <thead>
+                    <th>事件</th>
+                    <th>说明</th>
+                    <th>参数</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>clickRowEvent</td>
+                        <td>点击某一行事件, 特别注意:
+                            1. 单选的时候,取消选中不会触发这个事件
+                            2. 行按钮点击或者是某个单元格的点击事件不会触发这个事件</td>
+                        <td>
+                            clickRowEvent: function(event, index, row, isSelect) {}，
+                            event: 点击事件参数，
+                            index: 这一行的下标从0开始，
+                            row: 本行数据对象，
+                            isSelect: 是否选中， true : 选中，false : 取消选中
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>selectRowEvent</td>
+                        <td>选中某一行事件, 这个和上面的区别就是只有选中才会触发这个事件，
+                            特别注意:
+                            1. 行按钮点击或者是某个单元格的点击事件不会触发这个事件</td>
+                        <td>
+                            selectRowEvent: function(event, index, row) {}，
+                            event: 点击事件参数，
+                            index: 这一行的下标从0开始，
+                            row: 本行数据对象，
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>

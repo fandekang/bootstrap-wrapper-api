@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>菜单栏</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="menu-wrapper" class="container-fluid" style="height: 100%;">
+        <div class="content">
+            <h1>菜单栏</h1>
+            <h5>菜单栏简介</h5>
+            <h2>示例</h2>
+            <table class="example">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="menu-list" class="menu-list"></div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <div id="codeDiv" class="codeDiv">
+                                <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                                <span class="showDivSpan">
+                                    <span>显示代码</span>
+                                </span>
+                            </div>
+                            <div class="codeArea">
+                                <div>
+                                    <p>$("#menu-list").MenuWrapper({
+                                        source: [{
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单1', url: 'aa', attributes: {
+                                        url: 'www.c.com' }
+                                        }, {
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单2', attributes: { url:
+                                        'www.c.com' }, children: [
+                                        {
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-1', attributes: { url:
+                                        'www.c.com' }
+                                        },
+                                        {
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-2', attributes: { url:
+                                        'www.c.com' }
+                                        }, {
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-3', attributes: { url:
+                                        'www.c.com' }
+                                        }, {
+                                        iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-4', attributes: { url:
+                                        'www.c.com' }
+                                        },
+                                        ]
+                                        }],
+                                        onLeafClick($item, remote, attrs) {
+                                        $('#main #content iframe').attr('src', attrs.url)
+                                        }
+                                        });</p>
+                                    <div class="codeTip">'source'参数是用作定义数据的,数据格式如下:</div>
+                                    <pre>
+    source: [{
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单1', url: 'aa', attributes: {
+    url: 'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2', attributes: { url:
+    'www.c.com' }, children: [
+    {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-1', attributes: { url:
+    'www.c.com' }
+    },
+    {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-2', attributes: { url:
+    'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-3', attributes: { url:
+    'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-4', attributes: { url:
+    'www.c.com' }
+    },
+    ]
+</pre>
+
+                                    <div class="codeTip">'sourceUrl'参数是用作获取后端服务器数据的,后台返回数据格式如下:</div>
+                                    <pre>{
+    "resultMsg":null,
+    "resultCode":null,
+    "result":[{
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单1', url: 'aa', attributes: {
+    url: 'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2', attributes: { url:
+    'www.c.com' }, children: [
+    {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-1', attributes: { url:
+    'www.c.com' }
+    },
+    {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-2', attributes: { url:
+    'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-3', attributes: { url:
+    'www.c.com' }
+    }, {
+    iconCls: 'glyphicon glyphicon-cloud', text: '菜单2-4', attributes: { url:
+    'www.c.com' }
+    },]}
+    </pre>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <h2>参数</h2>
+            <table class="normal">
+                <thead>
+                    <tr>
+                        <th>参数</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>可选值</th>
+                        <th>默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>sourceUrl</td>
+                        <td>远程地址,将返回的数据显示到菜单中</td>
+                        <td>String</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>append</td>
+                        <td>是否叠加, 这个参数主要用于reload的时候</td>
+                        <td>boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>source</td>
+                        <td>本地数据</td>
+                        <td>json数组</td>
+                        <td>—</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>loaded</td>
+                        <td>是否加载完成标志, 这个标志主要作用于openNode方法</td>
+                        <td>Boolean</td>
+                        <td>true/false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>activeNode</td>
+                        <td>默认选中下标</td>
+                        <td>Number</td>
+                        <td>—</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>tip</td>
+                        <td>悬浮提示文字</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>方法</h2>
+            <table class="normal">
+                <thead>
+                    <th>方法名称</th>
+                    <th>说明</th>
+                    <th>参数</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>onLoadSuccess</td>
+                        <td>加载成功</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>onLoadComplete</td>
+                        <td>加载完成</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>事件</h2>
+            <table class="normal">
+                <thead>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>onLeafClick</td>
+                        <td>叶子节点点击事件</td>
+                        <td>$item: 点击的叶子节点jquery对象, remote: 后台传递过来的url,
+                            attrs 后台传递过来的attributes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
